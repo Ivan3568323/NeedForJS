@@ -1,3 +1,7 @@
+:root {
+    --height-elem: 100px;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,6 +29,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 ol, ul {
 	list-style: none;
@@ -46,28 +51,99 @@ table {
     display: none;
 }
 
+.game {
+    height: 100%;
+    display: flex;
+}
+
 .car, .enemy {
-    width: 50px;
-    height: 100px;
-    background: transparent url('./image/player.png') center / cover no-repeat;
+    width: calc(var(--height-elem) / 2);
+    height: var(--height-elem);
+    background: transparent url('./image/player.png') center / contain no-repeat;
     position: absolute;
-    left: 125px;
-    bottom: 10px;
 }
 
 .gameArea {
     width: 300px;
     height: 100vh;
     position: relative;
-    overflow: hidden;
     margin: auto;
-    background: #222;
+    background: rgb(44, 44, 44);
+    overflow: hidden;
 }
 
 .line {
     position: absolute;
     width: 10px;
-    height: 50px;
+    height: calc(var(--height-elem) / 2);
     background: #fff;
-    left: 145px;
+    left: 145px
 }
+
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important; 
+    width: 1px !important; 
+    overflow: hidden;
+}
+
+  .start {
+    z-index: 200;
+    position: fixed;
+    background: black;
+    top: 0;
+    left: 0;
+    height: calc(50px - 2rem);
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 3px 3px 5px 1px #ccc;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .btn {
+    font: inherit;
+    background-color: black;
+    cursor: pointer;
+    padding: 5px 25px;
+    border-color: #000000;
+    border: none;
+    color: #fff;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+  }
+
+  .btn:hover {
+    box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
+  }
+
+  .btn:disabled {
+      display: none;
+      background-color: #ccc;
+      color: #ddd;
+  }
+
+
+  .score {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: -3px -3px 5px 1px #ccc;
+    height: calc(50px - 2rem);
+    padding: 1rem;
+    background: black;
+    z-index: 200;
+    color: white;
+  }
